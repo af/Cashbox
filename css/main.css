@@ -1,0 +1,27 @@
+@import "normalize.css";
+html {
+  background: #eee;
+}
+html body {
+  background: #fff;
+  padding: 1em;
+  width: 900px;
+  margin: 1em auto;
+}
+header nav {
+  margin-bottom: 1em;
+}
+header nav ul {
+  margin: 0;
+  padding: 0;
+}
+header nav li {
+  display: inline-block;
+  padding: 4px 15px 4px 0;
+}
+body > section {
+  display: none;
+}
+#import {
+  display: block;
+}

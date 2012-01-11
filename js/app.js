@@ -1,33 +1,28 @@
 (function($, window) {
-
-var Account = Backbone.Model.extend({
-    defaults: {
-        name: null,
-        balance: 0
-    }
-});
-window.Account = Account;
-
+var Store = window.Store;
 
 var Expense = Backbone.Model.extend({
+    url: '/expense',
     defaults: {
         description: '',
         amount: 0,
         date: null,
-        account: null,      // Should be a reference to an Account instance
         balance: null,
         imported_at: null
     },
-
-    // Override JSON serialization so that the expense's account name is returned,
-    // rather than a full Account model instance.
-    toJSON: function() {
-        var attrs = this.attributes;
-        attrs.account = this.get('account').get('name');
-        return attrs;
-    }
 });
-window.Expense = Expense;
+
+
+var ImportedExpenses = Backbone.Collection.extend({
+    model: Expense,
+    localStorage: new Store('Expense')
+});
+
+
+var TableView = Backbone.View.extend({
+    el: $('#expenses'),
+    template: null
+});
 
 
 // Helper class for parsing CSV files.
@@ -68,7 +63,8 @@ CSVParser.prototype._process_data = function(data) {
     var lines = data.split('\n'),
         fields = ['date', 'description', 'amount', 'credit_amount', 'balance',],     // Assume a fixed field order for now
         import_time = new Date(),
-        output = [];
+        output = [],
+        collection = new ImportedExpenses();
 
     // Iterate through each line of the csv file, and create a new Expense for
     // each using our assumed field order. This is basic, but more configurable
@@ -83,7 +79,8 @@ CSVParser.prototype._process_data = function(data) {
         attr_hash.imported_at = import_time;
         output.push(new Expense(attr_hash));
     });
-    return output;
+    collection.add(output);
+    return collection;
 };
 
 
@@ -98,7 +95,9 @@ $(document).ready(function() {
             f = files[i];
             parser = new CSVParser();
             parser.parse(f, function(expense_list) {
-                console.log(expense_list);
+                expense_list.each(function(e) {
+                    e.save();
+                });
             });
         }
     });

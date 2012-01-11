@@ -21,7 +21,16 @@ var ImportedExpenses = Backbone.Collection.extend({
 
 var TableView = Backbone.View.extend({
     el: $('#expenses'),
-    template: null
+    template: Handlebars.compile($('#expense_list').text()),
+    initialize: function() {
+        this.collection.bind('reset', this.render, this);
+    },
+    render: function() {
+        var rendered_html = this.template(this.collection.toJSON());
+        console.log(this.template, rendered_html);
+        $(this.el).html(rendered_html);
+        return this;
+    }
 });
 
 
@@ -87,6 +96,10 @@ CSVParser.prototype._process_data = function(data) {
 
 // Toy usage of CSVParser from a FileInput:
 $(document).ready(function() {
+    var c = new ImportedExpenses();
+    var tv = new TableView({ collection: c });
+    c.fetch();
+
     function parse_files(fileList) {
         var f, parser;
         for (var i=0; i < fileList.length; i += 1) {

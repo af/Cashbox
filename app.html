@@ -26,6 +26,7 @@
     </section>
     <section id="export"></section>
 
+    <!-- Elements used for drag and drop UI -->
     <div id="drop_zone"></div>
     <div id="hover_cover">Drop a CSV file onto the page to import it!</div>
 
@@ -33,9 +34,19 @@
     <script src="js/lib/jquery.1.7.0.min.js"></script>
     <script src="js/lib/backbone.0.5.3.min.js"></script>
     <script src="js/lib/handlebars.1.0.0b6.js"></script>
-
-    <!-- use localstorage for now: -->
     <script src="js/lib/backbone.localstorage.js"></script>
+
+    <script id="expense_list" type="text/x-handlebars-template">
+        <table><tbody>
+        {{#each this}}
+        <tr>
+            <td>{{date}}</td>
+            <td>{{description}}</td>
+            <td>{{amount}}</td>
+        </tr>
+        {{/each}}
+        </tbody></table>
+    </script>
 
     <script src="js/app.js"></script>
 </div></body>

@@ -26,6 +26,9 @@ body > section {
 #import {
   display: block;
 }
+.hide {
+  display: none;
+}
 #drop_zone {
   display: none;
   position: absolute;

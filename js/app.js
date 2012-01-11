@@ -107,13 +107,21 @@ $(document).ready(function() {
     });
 
     // Basic drag & drop support:
-    var docEl = document.documentElement;
+    var drop_zone = $('#drop_zone');
+    var hover_cover = $('#hover_cover');
     var cancel_event = function(e) { e.stopPropagation(); e.preventDefault(); };
-    docEl.addEventListener('dragenter', cancel_event);
-    docEl.addEventListener('dragover', cancel_event);
-    docEl.addEventListener('dragexit', cancel_event);
-    docEl.addEventListener('drop', function(e) {
+    drop_zone[0].addEventListener('dragover', cancel_event);
+    drop_zone[0].addEventListener('dragenter', function(e) {
         cancel_event(e);
+        hover_cover.addClass('file_hover');
+    });
+    drop_zone[0].addEventListener('dragleave', function(e) {
+        cancel_event(e);
+        hover_cover.removeClass('file_hover');
+    });
+    drop_zone[0].addEventListener('drop', function(e) {
+        cancel_event(e);
+        hover_cover.removeClass('file_hover');
         parse_files(e.dataTransfer.files);
     });
 });

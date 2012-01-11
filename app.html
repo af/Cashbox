@@ -5,7 +5,7 @@
     <title>Cashbox</title>
     <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" >
 </head>
-<body>
+<body><div id="page_container">
     <header>
         <nav>
         <ul>
@@ -26,6 +26,9 @@
     </section>
     <section id="export"></section>
 
+    <div id="drop_zone"></div>
+    <div id="hover_cover">Drop a CSV file onto the page to import it!</div>
+
     <script src="js/lib/underscore.1.2.1.min.js"></script>
     <script src="js/lib/jquery.1.7.0.min.js"></script>
     <script src="js/lib/backbone.0.5.3.min.js"></script>
@@ -35,5 +38,5 @@
     <script src="js/lib/backbone.localstorage.js"></script>
 
     <script src="js/app.js"></script>
-</body>
+</div></body>
 </html>

@@ -49,7 +49,8 @@ CSVParser.prototype.parse = function(file, callback) {
         reader.readAsText(file);    // Note: This fails on Chrome if loading the page via a file:// url
     }
     else {
-        this._raise_error('Invalid file type provided');
+        this._raise_error('Invalid file type provided. Expected ' + this.expected_type +
+                          ' and got ' + file.type);
     }
 };
 
@@ -86,20 +87,34 @@ CSVParser.prototype._process_data = function(data) {
 
 // Toy usage of CSVParser from a FileInput:
 $(document).ready(function() {
-    $('input[type=file]').change(function(e) {
-        var files = e.target.files,
-            f,
-            parser;
-
-        for (var i=0, l=files.length; i<l; i+=1) {
-            f = files[i];
+    function parse_files(fileList) {
+        var f, parser;
+        for (var i=0; i < fileList.length; i += 1) {
+            f = fileList[i];
             parser = new CSVParser();
             parser.parse(f, function(expense_list) {
+                // Save each individual expense to localstorage (there is no
+                // save method on the collection)
                 expense_list.each(function(e) {
                     e.save();
                 });
             });
         }
+    }
+
+    $('input[type=file]').change(function(e) {
+        parse_files(e.target.files);
+    });
+
+    // Basic drag & drop support:
+    var docEl = document.documentElement;
+    var cancel_event = function(e) { e.stopPropagation(); e.preventDefault(); };
+    docEl.addEventListener('dragenter', cancel_event);
+    docEl.addEventListener('dragover', cancel_event);
+    docEl.addEventListener('dragexit', cancel_event);
+    docEl.addEventListener('drop', function(e) {
+        cancel_event(e);
+        parse_files(e.dataTransfer.files);
     });
 });
 

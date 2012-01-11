@@ -110,18 +110,28 @@ $(document).ready(function() {
     var drop_zone = $('#drop_zone');
     var hover_cover = $('#hover_cover');
     var cancel_event = function(e) { e.stopPropagation(); e.preventDefault(); };
+
+    // Only reveal the drop zone and the hover layer when a file is dragged
+    // over the page:
+    document.body.addEventListener('dragenter', function(e) {
+        cancel_event(e);
+        drop_zone.show();
+    });
+
     drop_zone[0].addEventListener('dragover', cancel_event);
     drop_zone[0].addEventListener('dragenter', function(e) {
         cancel_event(e);
-        hover_cover.addClass('file_hover');
+        hover_cover.show();
     });
     drop_zone[0].addEventListener('dragleave', function(e) {
         cancel_event(e);
-        hover_cover.removeClass('file_hover');
+        hover_cover.hide();
+        drop_zone.hide();
     });
     drop_zone[0].addEventListener('drop', function(e) {
         cancel_event(e);
-        hover_cover.removeClass('file_hover');
+        drop_zone.hide();
+        hover_cover.hide();
         parse_files(e.dataTransfer.files);
     });
 });

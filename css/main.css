@@ -27,6 +27,7 @@ body > section {
   display: block;
 }
 #drop_zone {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;

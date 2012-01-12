@@ -7,26 +7,33 @@
 </head>
 <body><div id="page_container">
     <header>
-        <nav>
+        <nav id="sections">
         <ul>
-            <li>Overview</li>
-            <li>Expenses</li>
-            <li>Import</li>
-            <li>Export</li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#expenses">Expenses</a></li>
+            <li><a href="#import">Import</a></li>
+            <li><a href="#export">Export</a></li>
         </ul>
         <div class="clear"></div>
         </nav>
     </header>
     <div id="main">
-        <section id="overview"></section>
+        <section id="overview">
+            <h1>Overview</h1>
+            <p>There's nothing here yet!</p>
+        </section>
         <section id="expenses"></section>
         <section id="import" class="hide">
+            <h1>Import Your CSV File</h1>
             <form action="." method="POST" id="">
                 <input type="file" name="csv_upload" multiple>
                 <button type="submit">Submit</button>
             </form>
         </section>
-        <section id="export"></section>
+        <section id="export">
+            <h1>Export Your Data</h1>
+            <p>There's nothing here yet!</p>
+        </section>
 
         <button id="clear_data">Clear data</button>
     </div>

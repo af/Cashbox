@@ -30,6 +30,9 @@ CASH.views.AppView = Backbone.View.extend({
         // Handle change events on file inputs as if they were uploads:
         'change input[type=file]': 'handle_file_upload',
 
+        // Navigation:
+        'click #sections a':    'change_section',
+
         // Drag and drop events:
         'dragenter':            'show_drop_zone',
         'dragover #drop_zone':  'cancel_event',
@@ -90,6 +93,12 @@ CASH.views.AppView = Backbone.View.extend({
 
         // Pass the W3C event, which contains the file data (unlike jQuery's wrapper):
         this.handle_file_upload(original_evt, original_evt.dataTransfer.files);
+    },
+
+    change_section: function(e) {
+        var section_id = $(e.target).attr('href');
+        this.$(section_id).show()
+            .siblings('section').hide();
     },
 
     // Clear all stored data (for development/testing)

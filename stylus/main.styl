@@ -4,26 +4,46 @@
 $page_background = #eee
 $background = white
 
+// Layout:
+$width = 900px
+$main_padding = 15px
+
 body
   background: $page_background
 
   #page_container
     background: $background
-    padding: 1em
-    width: 900px
+    padding: $main_padding
+    width: $width
     min-height:500px
     margin: 1em auto
 
 
 header
+  margin: -1*$main_padding
+  margin-bottom: 1em
+
   nav
     margin-bottom: 1em
   nav ul
     margin: 0
     padding: 0
   nav li
-    display: inline-block
-    padding: 4px 15px 4px 0
+    display: block
+    float: left
+    padding: 1em 0
+    width: (($width + 2*$main_padding)/4) - 1
+    margin: 0
+    color: #777
+    font-weight: bold
+    text-align: center
+    background: -webkit-linear-gradient(#eee, #ddd)
+    border: 1px solid #ccc
+    border-right-width: 0
+
+    &:last-child
+      width: (($width + 2*$main_padding)/4)
+      border-right-width: 1px
 
 body > section
   display: none
@@ -35,6 +55,9 @@ body > section
 // Helper classes
 .hide
   display: none
+
+.clear
+  clear: both
 
 
 // Drag and drop-related elements:

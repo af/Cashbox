@@ -9,24 +9,10 @@ $(document).ready(function() {
     var tv = new CASH.views.TableView({ collection: c });
     c.fetch();
 
-    function parse_files(fileList) {
-        var f, parser;
-        for (var i=0; i < fileList.length; i += 1) {
-            f = fileList[i];
-            parser = new CASH.utils.CSVParser();
-            parser.parse(f, function(expense_list) {
-                // Save each individual expense to localstorage (there is no
-                // save method on the collection)
-                expense_list.each(function(e) {
-                    e.save();
-                });
-                c.fetch();
-            });
-        }
-    }
-
     $('body').on('change', 'input[type=file]', function(e) {
-        parse_files(e.target.files);
+        CASH.utils.handle_fileList(e.target.files, function() {
+            c.fetch();
+        });
     });
 
     // Basic drag & drop support:
@@ -55,7 +41,9 @@ $(document).ready(function() {
         cancel_event(e);
         drop_zone.hide();
         hover_cover.hide();
-        parse_files(e.dataTransfer.files);
+        CASH.utils.handle_fileList(e.dataTransfer.files, function() {
+            c.fetch();
+        });
     });
 });
 

@@ -67,4 +67,24 @@ CSVParser.prototype = {
     },
 };
 
+
+// Utility function for handling FileLists:
+// TODO: pass a merged collection to the callback
+CASH.utils.handle_fileList = function(fileList, callback) {
+    var f, parser;
+    for (var i=0; i < fileList.length; i += 1) {
+        f = fileList[i];
+        parser = new CASH.utils.CSVParser();
+        parser.parse(f, function(expense_list) {
+            // Save each individual expense to localstorage (there is no
+            // save method on the collection)
+            expense_list.each(function(e) {
+                e.save();
+            });
+            callback && callback();
+        });
+    }
+};
+
+
 }(window, jQuery));

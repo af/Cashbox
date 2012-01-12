@@ -110,11 +110,12 @@ $(document).ready(function() {
                 expense_list.each(function(e) {
                     e.save();
                 });
+                c.fetch();
             });
         }
     }
 
-    $('input[type=file]').change(function(e) {
+    $('body').on('change', 'input[type=file]', function(e) {
         parse_files(e.target.files);
     });
 

@@ -1,0 +1,15 @@
+vendor(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  -ms-{prop} args
+  -o-{prop} args
+  {prop} args
+
+
+background-linear-gradient(start, stop)
+  background-image: -webkit-linear-gradient(start, stop)
+  background-image: -moz-linear-gradient(start, stop)
+  background-image: linear-gradient(start, stop)
+
+border-radius()
+  vendor('border-radius', arguments)

@@ -19,7 +19,7 @@
     </header>
     <section id="overview"></section>
     <section id="expenses"></section>
-    <section id="import">
+    <section id="import" class="hide">
         <form action="." method="POST" id="">
             <input type="file" name="csv_upload" multiple>
             <button type="submit">Submit</button>
@@ -38,15 +38,19 @@
     <script src="js/lib/backbone.localstorage.js"></script>
 
     <script id="expense_list" type="text/x-handlebars-template">
-        <table><tbody>
+        <table class="expenses"><tbody>
         {{#each this}}
         <tr>
-            <td>{{date}}</td>
-            <td>{{description}}</td>
-            <td>{{amount}}</td>
+            <td class="date">{{date}}</td>
+            <td class="description">{{description}}</td>
+            <td class="amount">{{amount}}</td>
         </tr>
         {{/each}}
         </tbody></table>
+
+        {{#unless this.length}}
+            <p>You haven't imported any expenses yet. Drag and drop a CSV file onto the page to begin!</p>
+        {{/unless}}
     </script>
 
     <script src="js/app.js"></script>

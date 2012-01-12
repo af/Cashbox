@@ -4,14 +4,15 @@ body {
 }
 body #page_container {
   background: #fff;
-  padding: 15px;
+  padding: 21px;
   width: 900px;
   min-height: 500px;
   margin: 1em auto;
+  box-shadow: 0 0 8px rgba(0,0,0,0.08);
 }
 header {
-  margin: -15px;
-  margin-bottom: 1em;
+  margin: -21px;
+  margin-bottom: 21px;
 }
 header nav {
   margin-bottom: 1em;
@@ -24,7 +25,7 @@ header nav li {
   display: block;
   float: left;
   padding: 1em 0;
-  width: 231.5px;
+  width: 234.5px;
   margin: 0;
   color: #777;
   font-weight: bold;
@@ -34,14 +35,24 @@ header nav li {
   border-right-width: 0;
 }
 header nav li:last-child {
-  width: 232.5px;
+  width: 235.5px;
   border-right-width: 1px;
 }
 body > section {
   display: none;
 }
-#import {
-  display: block;
+table.expenses td {
+  padding: 2px 10px 2px 0;
+}
+table.expenses td.date {
+  color: #555;
+}
+table.expenses td.amount {
+  text-align: right;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.2em;
+  color: #999;
 }
 .hide {
   display: none;

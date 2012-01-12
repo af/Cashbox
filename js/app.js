@@ -27,7 +27,6 @@ var TableView = Backbone.View.extend({
     },
     render: function() {
         var rendered_html = this.template(this.collection.toJSON());
-        console.log(this.template, rendered_html);
         $(this.el).html(rendered_html);
         return this;
     }

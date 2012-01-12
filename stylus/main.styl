@@ -6,7 +6,7 @@ $background = white
 
 // Layout:
 $width = 900px
-$main_padding = 15px
+$main_padding = 21px
 
 body
   background: $page_background
@@ -17,11 +17,12 @@ body
     width: $width
     min-height:500px
     margin: 1em auto
+    box-shadow: 0 0 8px rgba(0,0,0,0.08)
 
 
 header
   margin: -1*$main_padding
-  margin-bottom: 1em
+  margin-bottom: $main_padding
 
   nav
     margin-bottom: 1em
@@ -48,8 +49,18 @@ header
 body > section
   display: none
 
-#import
-  display: block
+
+table.expenses
+  td
+    padding: 2px 10px 2px 0
+    &.date
+      color: #555
+    &.amount
+      text-align: right
+      font-weight: bold
+      font-family: monospace
+      font-size: 1.2em
+      color: #999
 
 
 // Helper classes

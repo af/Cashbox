@@ -17,15 +17,19 @@
         <div class="clear"></div>
         </nav>
     </header>
-    <section id="overview"></section>
-    <section id="expenses"></section>
-    <section id="import" class="hide">
-        <form action="." method="POST" id="">
-            <input type="file" name="csv_upload" multiple>
-            <button type="submit">Submit</button>
-        </form>
-    </section>
-    <section id="export"></section>
+    <div id="main">
+        <section id="overview"></section>
+        <section id="expenses"></section>
+        <section id="import" class="hide">
+            <form action="." method="POST" id="">
+                <input type="file" name="csv_upload" multiple>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <section id="export"></section>
+
+        <button id="clear_data">Clear data</button>
+    </div>
 
     <!-- Elements used for drag and drop UI -->
     <div id="drop_zone"></div>

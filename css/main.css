@@ -38,8 +38,13 @@ header nav li:last-child {
   width: 235.5px;
   border-right-width: 1px;
 }
-body > section {
-  display: none;
+#main {
+  position: relative;
+}
+#main #clear_data {
+  position: absolute;
+  top: 0;
+  right: 1em;
 }
 table.expenses td {
   padding: 2px 10px 2px 0;

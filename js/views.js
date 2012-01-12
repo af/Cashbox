@@ -8,7 +8,8 @@ CASH.views.TableView = Backbone.View.extend({
     el: $('#expenses'),
     template: Handlebars.compile($('#expense_list').text()),
     initialize: function() {
-        this.collection.bind('reset', this.render, this);
+        _.bindAll(this);
+        this.collection.bind('reset', this.render);
     },
     render: function() {
         var rendered_html = this.template(this.collection.toJSON());
@@ -35,6 +36,9 @@ CASH.views.AppView = Backbone.View.extend({
         'dragleave #drop_zone': 'hide_drop_zone',
         'dragenter #drop_zone': 'show_hover_layer',
         'drop      #drop_zone': 'handle_file_drop',
+
+        // Reset helper, for development:
+        'click    #clear_data': 'clear_data',
     },
 
     initialize: function() {
@@ -86,6 +90,12 @@ CASH.views.AppView = Backbone.View.extend({
 
         // Pass the W3C event, which contains the file data (unlike jQuery's wrapper):
         this.handle_file_upload(original_evt, original_evt.dataTransfer.files);
+    },
+
+    // Clear all stored data (for development/testing)
+    clear_data: function(e) {
+        window.localStorage.clear();
+        this.collection.reset();
     },
 });
 

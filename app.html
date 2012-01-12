@@ -9,10 +9,10 @@
     <header>
         <nav id="sections">
         <ul>
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#expenses">Expenses</a></li>
-            <li><a href="#import">Import</a></li>
-            <li><a href="#export">Export</a></li>
+            <li><a href="#!overview">Overview</a></li>
+            <li><a href="#!expenses">Expenses</a></li>
+            <li><a href="#!import">Import</a></li>
+            <li><a href="#!export">Export</a></li>
         </ul>
         <div class="clear"></div>
         </nav>
@@ -70,6 +70,7 @@
     <script>
         $(document).ready(function() {
             var app = new CASH.views.AppView();
+            Backbone.history.start();
         });
     </script>
 </div></body>

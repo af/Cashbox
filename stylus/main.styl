@@ -37,8 +37,6 @@ header
     color: #777
     font-weight: bold
     text-align: center
-    background: #ddd
-    background-linear-gradient(#eee, #ddd)
     border: 1px solid #ccc
     border-right-width: 0
 
@@ -51,6 +49,13 @@ header
       display: inline-block
       width: 100%
       padding: 1em 0
+      text-shadow: 1px 1px 0 white
+      background: #ddd
+      background-linear-gradient(#eee, #ddd)
+
+      &.active
+        vendor(box-shadow, 0 0 8px #bbb inset)
+        background-linear-gradient(#eee, #ccc)
 
 #main
   position: relative

@@ -131,7 +131,11 @@ CASH.views.AppView = Backbone.View.extend({
     change_section: function(new_url) {
         var section_id = new_url.replace(/^#!/, '');
         this.$('#' + section_id).show()
-            .siblings().filter('section').hide();
+            .siblings('section').hide();
+
+        var selector = 'a[href="' + new_url + '"]';
+        this.nav.find(selector).addClass('active');
+        this.nav.find('a').not(selector).removeClass('active');
     },
 
     // Clear all stored data (for development/testing)

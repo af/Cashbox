@@ -1,6 +1,7 @@
 @import "normalize.css";
 body {
   font-family: 'Open Sans', 'Lucida Sans', sans-serif;
+  color: #444;
   background: #eee;
 }
 body #page_container {
@@ -71,9 +72,19 @@ header nav li a.active {
 h1 {
   font-size: 1.5em;
 }
+h2 {
+  font-size: 1.3em;
+  margin: 1.5em 0 0.5em;
+}
+p {
+  line-height: 1.5;
+  margin: 0.6em 0;
+  max-width: 45em;
+}
 button {
   font-size: 0.9em;
   font-weight: bold;
+  font-family: 'Open Sans', 'Lucida Sans', sans-serif;
   color: #fff;
   background: #59a12f;
   background-image: -webkit-linear-gradient(#86cf5b, #59a12f);
@@ -88,7 +99,7 @@ button {
   border-radius: 5px;
 }
 button.passive {
-  color: #333;
+  color: #444;
   background: #eee;
   border: 1px solid #bebebe;
   background-image: -webkit-linear-gradient(#eee, #ddd);
@@ -138,10 +149,14 @@ table.expenses td.amount {
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
   padding: 28% 0;
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #fff;
   overflow: hidden;
   text-align: center;
-  background: rgba(0,0,0,0.20);
+  background: rgba(0,0,0,0.30);
   z-index: 1000;
 }
 #hover_cover.file_hover {

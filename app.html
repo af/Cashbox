@@ -10,8 +10,8 @@
     <header>
         <nav id="sections">
         <ul>
-            <li><a href="#!overview">Overview</a></li>
-            <li><a href="#!expenses" class="initial">Expenses</a></li>
+            <li><a href="#!about" class="initial">About</a></li>
+            <li><a href="#!expenses">Expenses</a></li>
             <li><a href="#!import">Import</a></li>
             <li><a href="#!export">Export</a></li>
         </ul>
@@ -19,16 +19,44 @@
         </nav>
     </header>
     <div id="main">
-        <section id="overview" class="hide">
-            <h1>Overview</h1>
-            <p>There's nothing here yet!</p>
+        <section id="about" class="hide">
+            <h1>Cashbox</h1>
+            <p>Cashbox is an HTML5 app for managing and analyzing your personal expenses. It's
+            at an early stage of development, but already lets you input data and do some
+            basic analysis. A modern browser (Chrome, Firefox, IE9+) is highly recommended–
+            thorough cross-browser testing hasn't been done yet.</p>
+            <p>You can <a href="#!import">import your data</a> from a CSV file (which can
+            be downloaded from most bank web sites).</p>
+            <p>All of your data is saved locally in your browser (via localStorage for now),
+            and is never sent to a third-party.</p>
         </section>
         <section id="expenses"></section>
         <section id="import" class="hide">
-            <h1>Import Your CSV File</h1>
+            <h1>Import Your Data</h1>
+
+            <p>You can get data into Cashbox in one of two ways:</p>
+            <h2>1. Drag and Drop</h2>
+            <p>Simply find a CSV file from your bank, and drag it onto this browser window.</p>
+
+            <h2>2. Select File(s)</h2>
+            <p>Use your browser to select one or more CSV files from your computer.
+            While choosing, hold the Shift key to select multiple files.</p>
             <form action="." method="POST" id="">
                 <input type="file" name="csv_upload" multiple>
             </form>
+
+            <h2>Data Format</h2>
+            <p>Currently, Cashbox is a bit picky about what data it accepts. Only CSV files
+            are supported, and they're expected to follow this format (without the first line):</p>
+
+            <pre>
+# Date      Description              Debit Amount  Credit Amount   Balance
+07/14/2011, MOUNTAIN EQUIPMENT COOP ,4.76         ,               ,231.79
+            </pre>
+
+            <p>You can download <a href="test/fixtures/test.csv">this example file</a> and try
+            importing it yourself.</p>
+
         </section>
         <section id="export" class="hide">
             <h1>Export Your Data</h1>

@@ -2,7 +2,7 @@
 @import "mixins"
 
 // Colours:
-$text_colour = #333
+$text_colour = #444
 $page_background = #eee
 $background = white
 $action = #59A12F
@@ -17,6 +17,7 @@ $main_padding = 20px
 
 body
   font-family: $default_font_stack
+  color: $text_colour
   background: $page_background
 
   #page_container
@@ -71,10 +72,18 @@ header
 
 h1
   font-size: 1.5em
+h2
+  font-size: 1.3em
+  margin: 1.5em 0 0.5em
+p
+  line-height: 1.5
+  margin: 0.6em 0
+  max-width: 45em
 
 button
   font-size: 0.9em
   font-weight: bold
+  font-family: $default_font_stack
   color: white
   background: $action
   background-linear-gradient(lighten($action, 30%), $action)
@@ -132,10 +141,14 @@ table.expenses
   top: 0
   left: 0
   width: 100%
-  padding: 28% 0     // FIXME: need to fill the whole page w/o scrollbars
+  height: 100%
+  padding: 28% 0
+  font-size: 2em
+  font-weight: bold
+  text-shadow: 1px 1px 0 #fff
   overflow: hidden
   text-align: center
-  background: rgba(0,0,0,0.2)
+  background: rgba(0,0,0,0.3)
   z-index:1000
 
   &.file_hover

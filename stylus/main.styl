@@ -2,8 +2,13 @@
 @import "mixins"
 
 // Colours:
+$text_colour = #333
 $page_background = #eee
 $background = white
+$action = #59A12F
+
+// Fonts:
+$default_font_stack = 'Open Sans', 'Lucida Sans', sans-serif
 
 // Layout:
 $width = 900px
@@ -11,6 +16,7 @@ $main_padding = 20px
 
 
 body
+  font-family: $default_font_stack
   background: $page_background
 
   #page_container
@@ -19,7 +25,6 @@ body
     min-height:500px
     margin: 1em auto
     box-shadow: 0 0 8px rgba(0,0,0,0.08)
-
 
 header
   background: #bbb
@@ -64,11 +69,24 @@ header
   > section > h1
     margin-top: 0
 
-  #clear_data
-    position: absolute
-    top: $main_padding
-    right: $main_padding
+h1
+  font-size: 1.5em
 
+button
+  font-size: 0.9em
+  font-weight: bold
+  color: white
+  background: $action
+  background-linear-gradient(lighten($action, 30%), $action)
+  border: 1px solid darken($action, 5%)
+  padding: 0.4em 1.2em
+  border-radius(5px)
+
+button.passive
+  color: $text_colour
+  background: #eee
+  border: 1px solid darken(#eee, 20%)
+  background-linear-gradient(#eee, #ddd)
 
 table.expenses
   td
@@ -116,3 +134,8 @@ table.expenses
 
   &.file_hover
     display: block
+
+#clear_data
+  position: fixed
+  bottom: $main_padding
+  right: $main_padding

@@ -75,12 +75,18 @@ CASH.views.AppView = Backbone.View.extend({
         table_view = new CASH.views.TableView({ collection: this.collection });
         this.collection.fetch();
 
-        // Set up a global Router:
+        // Set up a global Router and feed it some hashbang urls to route:
         var hashbangs = this.nav.find('a').map(function() {
             return $(this).attr('href');
         });
         this.router = new AppRouter({ hashbangs: Array.prototype.slice.call(hashbangs) });
         this.router.bind('route_change', this.change_section);
+
+        // If an initial link is set in the markup, set location.hash to it:
+        if (!window.location.hash) {
+            var initial_hash = this.nav.find('.initial').attr('href');
+            initial_hash && (window.location.hash = initial_hash);
+        }
     },
 
     // Handle a file upload event (from a file drop or a FileInput),

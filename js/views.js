@@ -29,13 +29,30 @@ var AppRouter = Backbone.Router.extend({
 });
 
 
+// Simple view to display a collection of expenses in an ordered table
 CASH.views.TableView = Backbone.View.extend({
     el: $('#expenses'),
     template: Handlebars.compile($('#expense_list').text()),
+
+    events: {
+        'click thead td':   'reorder_table',
+    },
+
     initialize: function() {
         _.bindAll(this);
         this.collection.bind('reset', this.render);
     },
+
+    reorder_table: function(e) {
+        var order_by = this.$(e.target).data('order_by');
+        // FIXME: ordering by description and date is broken
+        this.collection.comparator = function(item) {
+            return item.get(order_by);
+        };
+        this.collection.sort();
+        this.render();
+    },
+
     render: function() {
         var rendered_html = this.template(this.collection.toJSON());
         $(this.el).html(rendered_html);

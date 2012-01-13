@@ -48,19 +48,26 @@
     <script src="js/lib/backbone.localstorage.js"></script>
 
     <script id="expense_list" type="text/x-handlebars-template">
-        <table class="expenses"><tbody>
-        {{#each this}}
-        <tr>
-            <td class="date">{{date}}</td>
-            <td class="description">{{description}}</td>
-            <td class="amount">{{amount}}</td>
-        </tr>
-        {{/each}}
-        </tbody></table>
-
-        {{#unless this.length}}
+        <h1>Your Imported Expenses</h1>
+        {{#if this.length}}
+            <table class="expenses">
+            <thead><tr>
+                <td data-order_by="date">Date</td>
+                <td data-order_by="description">Description</td>
+                <td data-order_by="amount">Amount</td>
+            </tr></thead>
+            <tbody>
+            {{#each this}}
+            <tr>
+                <td class="date">{{date}}</td>
+                <td class="description">{{description}}</td>
+                <td class="amount">{{amount}}</td>
+            </tr>
+            {{/each}}
+            </tbody></table>
+        {{else}}
             <p>You haven't imported any expenses yet. Drag and drop a CSV file onto the page to begin!</p>
-        {{/unless}}
+        {{/if}}
     </script>
 
     <script src="js/models.js"></script>

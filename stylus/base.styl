@@ -1,0 +1,35 @@
+h1
+  font-size: 1.5em
+h2
+  font-size: 1.3em
+  margin: 1.5em 0 0.5em
+
+p
+  line-height: 1.5
+  margin: 0.6em 0
+  max-width: 45em
+
+button
+  font-size: 0.9em
+  font-weight: bold
+  font-family: $default_font_stack
+  color: white
+  background: $action
+  background-linear-gradient(lighten($action, 30%), $action)
+  border: 1px solid darken($action, 5%)
+  padding: 0.4em 1.2em
+  border-radius(5px)
+
+button.passive
+  color: $text_colour
+  background: #eee
+  border: 1px solid darken(#eee, 20%)
+  background-linear-gradient(#eee, #ddd)
+
+
+// Helper classes
+.hide
+  display: none
+
+.clear
+  clear: both

@@ -1,0 +1,30 @@
+// Drag and drop-related elements:
+#drop_zone
+  display: none
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  overflow: hidden
+  z-index:9999
+
+#hover_cover
+  display: none
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  padding: 28% 0
+  font-size: 2em
+  font-weight: bold
+  text-shadow: 1px 1px 0 #fff
+  overflow: hidden
+  text-align: center
+  background: rgba(0,0,0,0.3)
+  z-index:1000
+
+  &.file_hover
+    display: block
+

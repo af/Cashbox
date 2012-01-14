@@ -1,0 +1,59 @@
+body
+  font-family: $default_font_stack
+  color: $text_colour
+  background: $page_background
+
+  #page_container
+    background: $background
+    width: $width
+    min-height:500px
+    margin: 1em auto
+    box-shadow: 0 0 8px rgba(0,0,0,0.08)
+
+header
+  background: #bbb
+  background-linear-gradient(#ccc, #bbb)
+
+  nav ul
+    margin: 0
+    padding: 0
+  nav li
+    display: block
+    float: left
+    vendor('box-sizing', border-box)
+    width: ($width/4)
+    margin: 0
+    color: #777
+    font-weight: bold
+    text-align: center
+    border: 1px solid #ccc
+    border-right-width: 0
+
+    &:last-child
+      border-right-width: 1px
+
+    a
+      color: #777
+      text-decoration: none
+      display: inline-block
+      width: 100%
+      padding: 1em 0
+      text-shadow: 1px 1px 0 white
+      background: #ddd
+      background-linear-gradient(#eee, #ddd)
+
+      &.active
+        vendor(box-shadow, 0 0 8px #bbb inset)
+        background-linear-gradient(#eee, #ccc)
+
+#main
+  position: relative
+  padding: $main_padding
+
+  > section > h1
+    margin-top: 0
+
+#clear_data
+  position: fixed
+  bottom: $main_padding
+  right: $main_padding

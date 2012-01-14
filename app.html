@@ -35,15 +35,21 @@
             <h1>Import Your Data</h1>
 
             <p>You can get data into Cashbox in one of two ways:</p>
-            <h2>1. Drag and Drop</h2>
-            <p>Simply find a CSV file from your bank, and drag it onto this browser window.</p>
+            <ol>
+                <li>
+                    <h2>Drag and Drop</h2>
+                    <p>Simply find a CSV file from your bank, and drag it onto this browser window.</p>
+                </li>
 
-            <h2>2. Select File(s)</h2>
-            <p>Use your browser to select one or more CSV files from your computer.
-            While choosing, hold the Shift key to select multiple files.</p>
-            <form action="." method="POST" id="">
-                <input type="file" name="csv_upload" multiple>
-            </form>
+                <li>
+                    <h2>Select File(s)</h2>
+                    <p>Use your browser to select one or more CSV files from your computer.
+                    While choosing, hold the Shift key to select multiple files.</p>
+                    <form action="." method="POST" id="">
+                        <input type="file" name="csv_upload" multiple>
+                    </form>
+                </li>
+            </ol>
 
             <h2>Data Format</h2>
             <p>Currently, Cashbox is a bit picky about what data it accepts. Only CSV files
